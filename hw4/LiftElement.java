@@ -1,5 +1,7 @@
 package hw4;
 
+import api.AbstractElement;
+
 /**
  * An element with two distinctive behaviors. First, it can be set up to move
  * vertically within a fixed set of boundaries. On reaching a boundary, the
@@ -11,7 +13,6 @@ package hw4;
  */
 public class LiftElement extends PlatformElement{
 // Is the same as the platform object except it goes up and down
-// No additional methods or anything is needed for this object
 	/**
 	 * Constructs a new Elevator. Initially the upper and lower boundaries are
 	 * <code>Double.NEGATIVE_INFINITY</code> and
@@ -24,5 +25,22 @@ public class LiftElement extends PlatformElement{
 	 */
 	public LiftElement(double x, double y, int width, int height) {
 		super(x, y, width, height);
+	}
+	
+	/**
+	 * Updates the movement for the object and all the objects associated with it
+	 */
+	@Override
+	public void update() {
+		addFrameCount();
+		this.setPosition(this.getXReal() + getDeltaX(), this.getYReal() + getDeltaY());
+		if(this.getYReal() > this.getMax()) {
+			this.setVelocity(getDeltaX(), getDeltaY()*-1);
+		} else if(getYReal() - this.getHeight() < this.getMin() - this.getHeight()) {
+			this.setVelocity(getDeltaX(), getDeltaY()*-1);
+		}
+		for(AbstractElement associated : getAssociated()) {
+			associated.update();
+		}
 	}
 }

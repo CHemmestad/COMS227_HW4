@@ -59,12 +59,13 @@ public class AttachedElement extends PlatformElement{
 	@Override
 	public void update() {
 		addFrameCount();
+		this.setPosition(base.getXReal() + offset, base.getYReal() - this.getHeight() - hover);
 		if(this.getXReal() + this.getWidth() > this.getMax()) {
 			this.setVelocity(getDeltaX()*-1, getDeltaY());
 		} else if(this.getXReal() < this.getMin()) {
 			this.setVelocity(getDeltaX()*-1, getDeltaY());
 		}
-		this.setPosition(base.getXReal() + offset, base.getYReal() - this.getHeight() - hover);
+//		this.setPosition(base.getXReal() + offset, base.getYReal() - this.getHeight() - hover);
 	}
 
 }

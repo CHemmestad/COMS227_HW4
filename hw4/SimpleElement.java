@@ -167,6 +167,9 @@ public class SimpleElement extends AbstractElement{
 	    return x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2;
 	}
 	
+	/**
+	 * Adds to the frameCount so that every element doesnt have to have their own framecount variable
+	 */
 	protected void addFrameCount() {
 		frameCount++;
 	}

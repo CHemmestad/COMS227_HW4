@@ -56,6 +56,8 @@ public class FollowerElement extends PlatformElement{
 	@Override
 	public void update() {
 		addFrameCount();
+		this.setPosition(this.getXReal() + this.getDeltaX() + ((PlatformElement)base).getDeltaX(), base.getYReal() - this.getHeight());
+		this.setBounds(base.getXReal(), base.getXReal() + base.getWidth());
 		if(this.getXReal() + this.getWidth() >= this.getMax()) {
 			this.setVelocity(getDeltaX()*-1, getDeltaY());
 			this.setPosition(this.getMax() - this.getWidth(), base.getYReal() - this.getHeight());
@@ -67,8 +69,8 @@ public class FollowerElement extends PlatformElement{
 		} else if(this.getYReal() < this.getMin()) {
 			this.setVelocity(getDeltaX(), getDeltaY()*-1);
 		}
-		this.setPosition(this.getXReal() + this.getDeltaX() + ((PlatformElement)base).getDeltaX(), base.getYReal() - this.getHeight());
-		this.setBounds(base.getXReal(), base.getXReal() + base.getWidth());
+//		this.setPosition(this.getXReal() + this.getDeltaX() + ((PlatformElement)base).getDeltaX(), base.getYReal() - this.getHeight());
+//		this.setBounds(base.getXReal(), base.getXReal() + base.getWidth());
 	}
 
 }

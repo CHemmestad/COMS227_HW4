@@ -114,17 +114,15 @@ public class PlatformElement extends MovingElement{
 	@Override
 	public void update() {
 		addFrameCount();
+		this.setPosition(this.getXReal() + getDeltaX(), this.getYReal() + getDeltaY());
 		if(this.getXReal() + this.getWidth() > max) {
+			this.setPosition(this.getXReal() - (this.getXReal() + this.getWidth() - max), this.getYReal());
 			this.setVelocity(getDeltaX()*-1, getDeltaY());
 		} else if(getXReal() < min) {
+			this.setPosition(this.getXReal() + (min - this.getXReal()), this.getYReal());
 			this.setVelocity(getDeltaX()*-1, getDeltaY());
 		}
-		if(this.getYReal() > this.getMax()) {
-			this.setVelocity(getDeltaX(), getDeltaY()*-1);
-		} else if(getYReal() + this.getHeight() < this.getMin()) {
-			this.setVelocity(getDeltaX(), getDeltaY()*-1);
-		}
-		this.setPosition(this.getXReal() + getDeltaX(), this.getYReal() + getDeltaY());
+//		this.setPosition(this.getXReal() + getDeltaX(), this.getYReal() + getDeltaY());
 		for(AbstractElement associated : associated) {
 			associated.update();
 		}
